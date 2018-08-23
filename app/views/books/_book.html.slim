@@ -1,4 +1,5 @@
 h3
-  = book.title
+  = link_to book_path(book) do
+    = book.title
 p
   = book.author
