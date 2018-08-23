@@ -7,4 +7,10 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    header
+      | BOOK CLUB
+      - if current_user
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete
+      - else
+        = link_to 'ログイン', new_user_session_paths
     = yield
