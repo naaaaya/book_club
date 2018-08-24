@@ -1,0 +1,9 @@
+= form_for [@book, @review] do |f|
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :author
+  = f.text_area :content
+
+  = f.submit '下書き保存'
+  = f.submit '公開'
