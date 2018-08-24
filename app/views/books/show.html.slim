@@ -6,4 +6,7 @@ p
   = @book.end_date
   | 終了
 
-= link_to '書評を投稿する', new_book_review_path(@book)
+- if current_user.reviewed?(@book)
+  = link_to '書評を編集する', edit_book_review_path(@book)
+- else
+  = link_to '書評を投稿する', new_book_review_path(@book)
