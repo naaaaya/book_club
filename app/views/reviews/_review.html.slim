@@ -1,5 +1,5 @@
 li
-  = link_to book_review_path(review.id) do
+  = link_to book_review_path(review.book.id, review.id) do
     p
     |「
     = review.title
