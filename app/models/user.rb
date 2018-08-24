@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def reviewed?(book)
-    return true if book.reviews.where(user_id: self.id)
+    book.reviews.where(user_id: self.id)
   end
 end

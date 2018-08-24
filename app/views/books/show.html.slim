@@ -7,10 +7,14 @@ p
   | 終了
 
 h3 書評一覧
-ul#review_list
-  = render @reviews
+- if @reviews.exists?
+  ul#review_list
+    = render @reviews
+- else
+  p まだ投稿されていません
 
-- if current_user.reviewed?(@book)
-  = link_to '書評を編集する', edit_book_review_path(@book)
+
+- if current_user_review = current_user.reviewed?(@book)
+  = link_to '書評を編集する', edit_book_review_path(@book, current_user_review.first.id)
 - else
   = link_to '書評を投稿する', new_book_review_path(@book)

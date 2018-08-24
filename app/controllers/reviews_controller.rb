@@ -21,9 +21,36 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    @book = @review.book
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    ApplicationRecord.transaction do
+      @review.update(update_params)
+      case params[:commit]
+      when '下書き保存'
+        @review.draft!
+      when '公開'
+        @review.published!
+      when '非公開'
+        @review.archived!
+      end
+    end
+    redirect_to book_path(@review.book.id)
+    rescue => e
+      render :text => e.message
+  end
+
   private
 
   def create_params
     params.require(:review).permit(:title, :content).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:review).permit(:title, :content)
   end
 end
