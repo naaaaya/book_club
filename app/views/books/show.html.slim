@@ -14,7 +14,7 @@ h3 書評一覧
   p まだ投稿されていません
 
 
-- if current_user_review = current_user.reviewed?(@book)
-  = link_to '書評を編集する', edit_book_review_path(@book, current_user_review.first.id)
+- if current_user.reviewed?(@book)
+  = link_to '書評を編集する', edit_book_review_path(@book, book.reviews.where(user_id: current_user.id).first)
 - else
   = link_to '書評を投稿する', new_book_review_path(@book)
