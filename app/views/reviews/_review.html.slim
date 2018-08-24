@@ -1,0 +1,7 @@
+li
+  = link_to book_review_path(review.id) do
+    p
+    |「
+    = review.title
+    | 」
+    = review.user.nickname

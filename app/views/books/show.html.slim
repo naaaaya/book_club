@@ -6,6 +6,10 @@ p
   = @book.end_date
   | 終了
 
+h3 書評一覧
+ul#review_list
+  = render @reviews
+
 - if current_user.reviewed?(@book)
   = link_to '書評を編集する', edit_book_review_path(@book)
 - else
