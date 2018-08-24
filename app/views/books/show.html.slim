@@ -1,2 +1,9 @@
 h2
   = @book.title
+h3
+  = @book.author
+p
+  = @book.end_date
+  | 終了
+
+= link_to '書評を投稿する', new_book_review_path(@book)
