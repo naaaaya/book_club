@@ -9,7 +9,7 @@ p
 h3 書評一覧
 - if @reviews.exists?
   ul#review_list
-    = render @reviews
+    = render partial: 'partial/review', collection: @reviews
 - else
   p まだ投稿されていません
 

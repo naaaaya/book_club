@@ -1,0 +1,6 @@
+li
+  = link_to book_review_path(user_review.book.id, user_review.id) do
+    p
+    |「
+    = user_review.title
+    | 」

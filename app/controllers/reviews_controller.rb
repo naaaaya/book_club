@@ -10,7 +10,12 @@ class ReviewsController < ApplicationController
     book = Book.find(params[:book_id])
     ApplicationRecord.transaction do
       @review = book.reviews.create(create_params)
-      @review.published! if params[:commit] = '公開' # FIXME: buttonの日本語に依存しているのでよくない
+      case params[:commit]
+      when '下書き保存'
+        @review.draft!
+      when '公開'
+        @review.published!
+      end # FIXME: buttonの日本語に依存しているのでよくない
     end
     redirect_to book_path(book.id)
     rescue => e
