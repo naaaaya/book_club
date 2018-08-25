@@ -8,7 +8,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
-      | BOOK CLUB
+      = link_to root_path do
+        p BOOK CLUB
       - if current_user
         = link_to 'ログアウト', destroy_user_session_path, method: :delete
       - else

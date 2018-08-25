@@ -4,4 +4,5 @@ li
     |「
     = review.title
     | 」
-    = review.user.nickname
+    = link_to user_path(review.user.id) do
+      = review.user.nickname

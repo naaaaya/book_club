@@ -1,0 +1,12 @@
+h2
+  = @user.nickname
+  h3 書評一覧
+  - if @reviews.exists?
+    h4 公開中
+    ul#review_list
+      = render partial: 'partial/user_review', collection: @reviews.published
+    h4 下書き
+    ul#review_list
+      = render partial: 'partial/user_review', collection: @reviews.draft
+  - else
+    p まだ投稿されていません
