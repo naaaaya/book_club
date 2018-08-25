@@ -1,0 +1,11 @@
+h2
+  = @book.title
+h3
+  = @book.author
+
+ul#tweets_list
+  = render partial: 'partial/tweet', collection: @tweets
+
+= form_for [@book, @tweet], :url => {:action => 'create'} do |f|
+  = f.text_area :content, placeholder: "質問やつぶやきを投稿しよう！"
+  = f.submit '投稿'

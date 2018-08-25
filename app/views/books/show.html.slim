@@ -18,3 +18,5 @@ h3 書評一覧
   = link_to '書評を編集する', edit_book_review_path(@book, @book.reviews.where(user_id: current_user.id).first.id)
 - else
   = link_to '書評を投稿する', new_book_review_path(@book)
+
+= link_to 'ディスカッション', book_tweets_path(@book)
