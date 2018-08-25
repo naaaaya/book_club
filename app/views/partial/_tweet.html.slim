@@ -1,0 +1,5 @@
+li
+  = tweet.content
+  = link_to user_path(tweet.user_id) do
+    = tweet.user.nickname
+  = tweet.created_at
